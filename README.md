@@ -6,10 +6,19 @@ Making Reports and Processing them, and setting up reports for employees to fill
 
 Report Post Request, adding it into the DB
 
+#Updates:
+-Added alloyeditor (react rtf html editor)
+-Added a subform form, and the choice of assigning it to your employees
+-Added a FAQ, HELP
+
 #ToDo:
 
--Add a edit report view, allowing users to review and edit their reports. 
--Add a subform button that allows the addition of subforms for that document, then becomes a tree like structure
+-Tune up edit/review
+-Make subforms get method a recursive function, in callback hell, considering using async library, to get subforms of subforms etc.
+-Make users only see reports they have assigned instead of all of them (Check if req.user equals author of forms)
+-Find better html to pdf converted
+-Need to display or predisplay info in edit box view
+#Summary
 
      Master form
          / \
