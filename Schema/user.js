@@ -14,6 +14,8 @@ var userSchema = mongoose.Schema({
 	   dob          : String,
 	   department   : String,
 	   forms_created:[{type: mongoose.Schema.Types.ObjectId, ref: 'Form'}],
+	   forms_incomplete :[{type: mongoose.Schema.Types.ObjectId, ref: 'Form'}],
+	   forms_completed : [{type: mongoose.Schema.Types.ObjectId, ref: 'Form'}],
 	   lackeys      :[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 	   position     : String
    },

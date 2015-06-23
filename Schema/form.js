@@ -9,7 +9,9 @@ var formSchema = mongoose.Schema({
    title: String,
    date : String,
    body : String,
-   author : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+   author : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+   subform : [{type: mongoose.Schema.Types.ObjectId, ref : 'Form'}],
+   isCompleted : {type: Boolean, default: false}
    
 });
 

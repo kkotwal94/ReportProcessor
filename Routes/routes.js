@@ -47,6 +47,55 @@ module.exports = function(app, passport) {
 	app.get('/forms', isLoggedIn, function(req, res) {
 		res.render('forms.ejs', {user : req.user}); 
 	 });
+	 
+	 app.get('/forms/:form', isLoggedIn, function(req, res) {
+		res.render('iForm.ejs');
+	
+	 });
+	 
+	 app.get('/form/:form', isLoggedIn, function(req, res) {
+		var id = req.params.form;
+		var array = [];
+		Form.findById(id, function(err, form) {
+			User.findById(form.author, function(err, author) {
+				
+				form.author[0] = author.local.firstName + " " + author.local.lastName;
+				
+				array.push(form);
+				console.log(array);
+				if (form.subform.length == 0) {
+					res.json(array);
+				}
+				if(form.subform.length != 0) {
+				var total = form.subform.length;
+				var numproc = 0;
+					form.subform.forEach(function(sub) {
+						Form.findById(sub, function(err, subs) {
+						array.push(subs);
+						numproc = numproc + 1;
+					
+					    if (numproc == total) {
+						    res.json(array);
+					    }
+						});
+				    });
+				}
+			
+				
+			});
+			
+		});
+		
+		
+			
+	 });
+	 
+	
+	 
+	 app.get('/forms/:form/sub', isLoggedIn, function(req, res) {
+		res.render('addSubform.ejs'); 
+	 });
+	 
 	 app.get('/formsToComplete', isLoggedIn, function(req, res) {
 		res.render('formsToComplete.ejs', {user : req.user}); 
 	 });
@@ -130,9 +179,31 @@ app.get('/allUsers', isLoggedIn, function(req, res) {
 
 app.get('/allForms', isLoggedIn, function(req, res) {
 	
-	
+	var totalproc = 0;
+	var dupe = [];
 	Form.find({}, function(err, form) {
-		res.json(form);
+			dupe = form;
+			
+			dupe.forEach(function(person) {
+			
+			User.findById(person.author, function(err, user) {
+				if (!err) {
+					
+			console.log("Author: " + person.author[0]);
+				person.author[0] = user.local.firstName + " " + user.local.lastName;
+				
+				totalproc = totalproc + 1;
+			
+				}
+				if(totalproc == dupe.length) {
+				res.json(dupe);
+				}
+			}
+			
+			);
+			});
+		
+		
 	});
 });
 
@@ -144,6 +215,26 @@ app.get('/lackeys', isLoggedIn, function(req, res) {
 	res.render('lackeys.ejs');
 });
 
+app.post('/addSubForm', isLoggedIn, function(req, res) {
+	var id = req.body.masterform;
+	var subform = new Form(); 
+	
+	subform.title = req.body.title;
+	subform.date = req.body.date;
+	subform.body = "<pre>" + req.body.title + "</pre>";
+	subform.save();
+	Form.findById(id, function(err, report) {
+		report.subform.push(subform);
+		report.save();
+	});
+	User.findById(req.body.id, function(err, user) {
+		user.local.forms_created.push(subform);
+		subform.author = user;
+		subform.save();
+	});
+	
+	res.json(req.body);
+});
 app.post('/addLackey/:id', isLoggedIn, function(req, res) {
 	var id = req.params.id;
 	User.findById(req.user._id, function(err, user) {
@@ -155,6 +246,8 @@ app.post('/addLackey/:id', isLoggedIn, function(req, res) {
 	});
 	res.json(req.body);
 });
+
+
 
 app.post('/removeLackey/:id', isLoggedIn, function(req, res) {
 	var id = req.params.id;
@@ -194,6 +287,12 @@ app.get('/allLackeys', isLoggedIn, function(req, res) {
 		}
 	});
 	
+});
+
+
+app.get('/forms/:form/edit', isLoggedIn, function(req, res) {
+   var id = req.params.form;
+   res.render('editForm.ejs');
 });
 
 app.post('/addForm', isLoggedIn, function(req, res) {

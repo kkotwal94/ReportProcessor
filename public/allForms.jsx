@@ -68,7 +68,7 @@ return(
 
   return (
    <tr>
-   <td>{form.title}</td>   <td>{form.date}</td> <td>{form.author}</td> <td>View Form Here</td>   
+   <td>{form.title}</td>   <td>{form.date}</td> <td>{form.author[0]}</td> <td><a href = {'/forms/' + form._id}>View Form Here</a></td>   
     </tr>
 	
 	

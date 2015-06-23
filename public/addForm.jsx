@@ -153,6 +153,6 @@ Array.prototype.remove = function(from, to) {
 };
 
 	$(document).ready(function () {
-		CKEDITOR.replace('ckedit');
+		AlloyEditor.editable('ckedit');
     
 });
