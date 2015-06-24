@@ -207,6 +207,52 @@ app.get('/allForms', isLoggedIn, function(req, res) {
 	});
 });
 
+app.get('/allMyForms', isLoggedIn, function(req, res) {
+	var totalproc = 0;
+	var dupe = [];
+	Form.find({}, function(err, form) {
+		form.forEach(function(person) {
+				console.log("Person : " + person.author[0]);
+				console.log("User : " + req.user._id);
+				
+				if(person.author[0] === req.user._id) {
+					console.log("Hit");
+					dupe.push(person);
+					
+				}
+				console.log(dupe);
+		});
+	});
+		
+		if (dupe.length!=0) {
+		dupe.forEach(function(person2) {
+			
+			User.findById(person2.author, function(err, user) {
+				if (!err) {
+					
+			console.log("Author: " + person2.author[0]);
+				person2.author[0] = user.local.firstName + " " + user.local.lastName;
+				
+				totalproc = totalproc + 1;
+			
+				}
+				if(totalproc == dupe.length) {
+				res.json(dupe);
+				}
+			}
+			
+			);
+			});
+		}
+		else {
+			res.json(dupe);
+		}
+		
+		
+		
+	
+});
+
 app.get('/addform', isLoggedIn, function(req, res) {
 	res.render("addform.ejs", {user : req.user});
 });

@@ -7,14 +7,24 @@ loadFormsFromServer : function() {
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
+			var total = data.length;
+			console.log(data.length);
 			var z = 0;
-			data.forEach(function(d) {
-			console.log(d.isCompleted);
-		if (d.isCompleted ==	false) {
-		data.splice(z, 1);
-		z = z + 1;
-		}
-		}); 
+			
+			for (var x = 0; x < total; x++) {
+				if(data[x] == null) {
+				   data.splice(x, 1);
+				}
+			}
+			total = data.length;
+			for (var i = 0; i< total; i++) {
+			
+			
+			 if(data[i].isCompleted != true){
+			 console.log(data[i]);
+					data.splice(i, 1);
+			 }
+			}	
 		console.log(data);
 			this.setState({forms: data});
 			

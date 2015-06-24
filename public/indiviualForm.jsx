@@ -76,10 +76,10 @@ componentDidMount: function() {
 			
 			<Form forms = {this.state.form} subforms = {this.state.subform}/>
 			<p/>
-			<button className = "btn"> <a href = {window.location.href + "/edit"}> Edit This Form </a></button>
+			<a href = {window.location.href + "/edit"}><button className = "btn">  Edit This Form </button></a>
 			<hr/>
 			<p></p>
-			<button className = "btn"> <a href = {window.location.href + "/sub"}> Add Subform </a></button>
+			 <a href = {window.location.href + "/sub"}><button className = "btn"> Add Subform </button></a>
 			<hr/>
             </div>
 			

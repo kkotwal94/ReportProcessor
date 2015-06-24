@@ -18,9 +18,9 @@ mongoose.connect(DB.url);
 require('./Passport/passport')(passport); //pass passport for config
 app.use(morgan('dev')); //log every request
 app.use(cookieParser()); //reading our cookies
-app.use(bodyParser()); //getting body info from html GET
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : false}));
+//app.use(bodyParser()); //getting body info from html GET
+app.use(bodyParser.json({limit: '100mb'})); //setting json body limit to 100mb 
+app.use(bodyParser.urlencoded({limit: '100mb'})); //same with utf-8
 app.use(express.static(__dirname + '/'));
 app.set('view engine', 'ejs');
 
