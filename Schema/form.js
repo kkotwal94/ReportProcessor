@@ -11,6 +11,7 @@ var formSchema = mongoose.Schema({
    body : String,
    author : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
    subform : [{type: mongoose.Schema.Types.ObjectId, ref : 'Form'}],
+   backupBody : String,
    isCompleted : {type: Boolean, default: false}
    
 });

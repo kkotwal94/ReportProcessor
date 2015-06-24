@@ -95,7 +95,7 @@ var UpdateForm = React.createClass({
 		React.findDOMNode(this.refs.title).value = '';
 		React.findDOMNode(this.refs.date).value = '';
 		React.findDOMNode(this.refs.body).value = '';
-		//React.findDOMNode(this.refs.sub).value = '';
+		
 	
 	},
     

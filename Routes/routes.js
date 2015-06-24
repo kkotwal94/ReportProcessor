@@ -305,6 +305,29 @@ app.post('/addForm', isLoggedIn, function(req, res) {
 	});
 	res.json(req.body);
 });
+
+app.post('/form/:form/editForm', isLoggedIn, function(req, res) {
+	var id = req.params.form;
+	console.log(id);
+	Form.findById(id, function(err, form) {
+		
+		if( req.body.title == "") {
+			req.body.title = form.title;
+		}
+		
+		if( req.body.body == "") {
+			req.body.body = form.body;
+		}
+		form.backupBody = form.body;
+		form.title = req.body.title;
+		
+		form.body = req.body.body;
+		form.save();
+		console.log(form);
+		res.json(req.body);
+	});
+	
+});
 //middleware to check if we are logged in 
    function isLoggedIn(req, res, next) {
    //if user is authenticated in the session, carry on
