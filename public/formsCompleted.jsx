@@ -17,7 +17,7 @@ loadFormsFromServer : function() {
 				}
 			}
 			total = data.length;
-			for (var i = 0; i< total; i++) {
+			for (var i = 0; i< data.length; i++) {
 			
 			
 			 if(data[i].isCompleted != true){

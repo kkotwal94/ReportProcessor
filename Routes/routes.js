@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
      
 	 var User = mongoose.model('User');
      var Form = mongoose.model('Form');
-	
+	 var array = [];
 	 app.get('/', function(req, res) {
          res.render('index.ejs'); //load the index.ejs file
          });
@@ -352,6 +352,30 @@ app.post('/addForm', isLoggedIn, function(req, res) {
 	res.json(req.body);
 });
 
+
+app.get('/form/:form/subFormTree', function(req, res) {
+	var id = req.params.form;
+	var num_proc = 0;
+	console.log(id);
+	Form.findById(id, function(err, form) {
+		console.log(form);
+		for (var x = 0; x < form.subform.length; x++) {
+			Form.findById(form.subform[x], function(err, subform) {
+				console.log("/=================Forms===================/")
+			
+			//console.log(subform);
+			console.log("/=================Forms===================/")
+			populate(subform);
+			});
+		}
+		num_proc = num_proc + 1;
+		if (num_proc == form.subform.length) {
+			res.json(array);
+			array.length = 0;
+		}
+	});
+});
+
 app.post('/form/:form/editForm', isLoggedIn, function(req, res) {
 	var id = req.params.form;
 	console.log(id);
@@ -374,6 +398,25 @@ app.post('/form/:form/editForm', isLoggedIn, function(req, res) {
 	});
 	
 });
+
+function populate(forms) {
+		//console.log("This is : " + forms);
+		var num_proc = 0;
+		Form.findById(forms, function (err, form) {
+			console.log(form);
+		if(form.subform.length != 0) {
+			//console.log(form);
+			var total = form.subform.length;
+			for (var i = 0; i < total; i++) {
+				array.push(form.subform[x]);
+				num_proc = num_proc + 1;
+				
+					populate(subform[x]);
+				
+			}
+		}
+		});
+	}
 //middleware to check if we are logged in 
    function isLoggedIn(req, res, next) {
    //if user is authenticated in the session, carry on
@@ -435,3 +478,6 @@ function isLadmin(req, res, next) {
         }
         return array;
     }
+	
+	
+	
