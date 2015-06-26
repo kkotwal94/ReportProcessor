@@ -131,9 +131,11 @@ componentDidMount: function() {
 			
 			
             <hr/>
-			<div className = "Form">
+			<div className = "Form" id = "Form">
 			
 			<Form forms = {this.state.form} subforms = {this.state.fullView}/>
+			</div>
+			<div>
 			<p/>
 			<a href = {window.location.href + "/edit"}><button className = "btn btn-primary">  Edit This Form </button></a>
 			<hr/>
@@ -185,7 +187,14 @@ $.ajax({
 		   
 		   
 		    <hr/>
-             
+     <button className = "btn btn-danger" onClick = {function(event) {
+	 var printContents = document.getElementById("Form").innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+	}}>Convert or Print as PDF</button>
+
             
             </div>
             )
@@ -252,3 +261,11 @@ function treeCycle(data) {
     }
 console.log(finalData);    
 }
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+	}

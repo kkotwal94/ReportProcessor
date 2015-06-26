@@ -7,12 +7,57 @@
 		<title>User</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		
 		 
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="/views/css/styles.css" rel="stylesheet">
+		 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" >
+
+		<style>@media print{a[href]:after{content:none}}
+		
+		@media print {
+* {-webkit-print-color-adjust: exact;}
+
+@page {
+      margin: 0;
+    }
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    div.row > div {
+      display: inline-block;  
+      border: solid 1px #ccc;
+      margin: 0.1cm;
+      font-size: 1rem;
+    }
+    div.row {
+      display: block;
+      margin: solid 2px black;
+      margin: 0.2cm 1cm;
+      font-size: 0;
+      white-space: nowrap;
+    }
+    .table {
+        transform: translate(8.5in, -100%) rotate(90deg);
+        transform-origin: bottom left;
+        display: block;
+    }
+	
+	 .table {
+     transform: translate(8.5in, -100%) rotate(90deg);
+     transform-origin: bottom left;
+     display: block;
+ }
+
+}
+
+
+
+
+</style>
 	
 	</head>
 	<body>
@@ -133,7 +178,7 @@
         <!-- LOCAL INFORMATION -->
         <div id = "SingleForm"> </div>
 	
-		<button  class = "btn" onclick="printDiv('SingleForm')">Print</button>
+		
 				</div>
 							
 				
@@ -187,15 +232,7 @@
 		<script src="../views/js/bootstrap.min.js"></script>
 		<script src="../views/js/scripts.js"></script>
 		<script type="text/jsx;harmony=true" src = "../public/indiviualForm.jsx"></script>
-		<script>
-		function printDiv(divName) {
-    var printContents = document.getElementById(divName).innerHTML;
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-}
-		</script>
+	
 		
 <script>
 var tableToExcel = (function () {
