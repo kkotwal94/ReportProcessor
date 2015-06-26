@@ -10,13 +10,13 @@ Report Post Request, adding it into the DB
 -Added alloyeditor (react rtf html editor)
 -Added a subform form, and the choice of assigning it to your employees
 -Added a FAQ, HELP
+-Added a recursive function to find all relations
+-Added a protected view so users can only see their view, whereas admin sees all forms
 
 #ToDo:
 
 -Tune up edit/review
--Make subforms get method a recursive function, in callback hell, considering using async library, to get subforms of subforms etc.
--Make users only see reports they have assigned instead of all of them (Check if req.user equals author of forms)
--Find better html to pdf converted
+-Find better html to pdf converter
 -Need to display or predisplay info in edit box view
 #Summary
 
