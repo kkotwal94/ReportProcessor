@@ -7,17 +7,17 @@ Making Reports and Processing them, and setting up reports for employees to fill
 Report Post Request, adding it into the DB
 
 #Updates:
--Added alloyeditor (react rtf html editor)
--Added a subform form, and the choice of assigning it to your employees
--Added a FAQ, HELP
--Added a recursive function to find all relations
--Added a protected view so users can only see their view, whereas admin sees all forms
+* Added alloyeditor (react rtf html editor)
+* Added a subform form, and the choice of assigning it to your employees
+* Added a FAQ, HELP
+* Added a recursive function to find all relations
+* Added a protected view so users can only see their view, whereas admin sees all forms
+* Added a user submitted button, where onclick a user can set their form to complete or incomplete (does not affect subforms yet)
+
 
 #ToDo:
-
--Tune up edit/review
--Find better html to pdf converter
--Need to display or predisplay info in edit box view
+* Find better html to pdf converter
+* Need to display or predisplay info in edit box view
 #Summary
 
      Master form
