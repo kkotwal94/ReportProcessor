@@ -18,6 +18,8 @@ Report Post Request, adding it into the DB
 #ToDo:
 * Find better html to pdf converter
 * Need to display or predisplay info in edit box view
+* Could have better css
+* Set all relational documents to complete or incomplete if main document has done so
 #Summary
 
      Master form
