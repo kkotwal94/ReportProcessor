@@ -1,31 +1,14 @@
+var isFinished = [];
 var AllForms = React.createClass({
 
 loadFormsFromServer : function() {
 	$.ajax({
-		url: '/allForms',
+		url: '/Userforms',
 		//type: 'GET',
 		dataType: 'json',
 		success: function(data) {
-			console.log(data);
-			var total = data.length;
-			console.log(data.length);
-			var z = 0;
-			
-			for (var x = 0; x < total; x++) {
-				if(data[x] == null) {
-				   data.splice(x, 1);
-				}
-			}
-			total = data.length;
-			for (var i = 0; i< data.length; i++) {
-			
-			
-			 if(data[i].isCompleted != true){
-			 console.log(data[i]);
-					data.splice(i, 1);
-			 }
-			}	
-		console.log(data);
+			arrayChecker(data);
+			data = isFinished;
 			this.setState({forms: data});
 			
 			
@@ -98,7 +81,14 @@ return(
  }
  });
 
-
+ function arrayChecker(something) {
+    for (var i = 0; i < something.length; i++){
+        if(something[i].isCompleted == true) {
+            isFinished.push(something[i]);
+        }
+    }
+    console.log(isFinished);
+}
 
 
 React.render(<AllForms  />,
