@@ -24,8 +24,10 @@ Report Post Request, adding it into the DB
 
      Master form
          / \
-    sub1    sub2
-    /\       /  \
+      sub1    sub2
+      /\       /  \
+
+
 ..... and so on
 
 Tree dependencie relies on who works under which manager, get and post request for that is working.
