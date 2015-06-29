@@ -22,14 +22,6 @@ Report Post Request, adding it into the DB
 * Set all relational documents to complete or incomplete if main document has done so
 #Summary
 
-     Master form
-         / \
-      sub1    sub2
-      /\       /  \
-
-
-..... and so on
-
 Tree dependencie relies on who works under which manager, get and post request for that is working.
 
 Just need to show on users who get assigned the subform, in there view that they have this form to complete, 
