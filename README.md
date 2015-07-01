@@ -16,9 +16,7 @@ Report Post Request, adding it into the DB
 
 
 #ToDo:
-* Find better html to pdf converter
 * Need to display or predisplay info in edit box view
-* Could have better css
 * Set all relational documents to complete or incomplete if main document has done so
 
 
@@ -34,6 +32,4 @@ at completion of form, they will all be appended together in the order they were
 Such as Master Form > sub1> sub1's childrens.... >sub2 > sub2's childrens.......
 
 using jspdf will convert to pdf from html, the textarea im using is CKEditor, which allows me to convert the text into html, then jspdf allows me to convert html to pdf. CKeditor takes images, ms word, and has alot other functionality http://ckeditor.com/
-
-
 
