@@ -2,7 +2,7 @@ var AllForms = React.createClass({
 
 loadFormsFromServer : function() {
 	$.ajax({
-		url: '/allAdminForms',
+		url: '/allForms',
 		//type: 'GET',
 		dataType: 'json',
 		success: function(data) {
