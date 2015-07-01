@@ -31,5 +31,5 @@ at completion of form, they will all be appended together in the order they were
 
 Such as Master Form > sub1> sub1's childrens.... >sub2 > sub2's childrens.......
 
-using jspdf will convert to pdf from html, the textarea im using is CKEditor, which allows me to convert the text into html, then jspdf allows me to convert html to pdf. CKeditor takes images, ms word, and has alot other functionality http://ckeditor.com/
+using jspdf will convert to pdf from html, the textarea im using is AlloyEditor, which allows me to convert the text into html, then jspdf allows me to convert html to pdf. Alloyeditor is built around CKeditor which takes images, ms word, and has alot other functionality http://ckeditor.com/. Check out alloyeditor too at http://alloyeditor.com/.
 
