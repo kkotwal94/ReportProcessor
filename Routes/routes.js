@@ -230,6 +230,46 @@ module.exports = function (app, passport) {
 		
         });
     });
+
+
+        app.get('/allAdminForms', isLoggedIn, function (req, res) {
+
+        var totalproc = 0;
+        var dupe = [];
+        Form.find({}, function (err, form) {
+            dupe = form;
+
+            dupe.forEach(function (person) {
+
+                User.findById(person.author, function (err, user) {
+                    if (!err) {
+
+                        console.log("Author: " + person.author[0]);
+                        person.author[0] = user.local.firstName + " " + user.local.lastName;
+
+                        totalproc = totalproc + 1;
+
+                    }
+                    if (totalproc == dupe.length) {
+                        res.json(dupe);
+                    }
+                }
+
+                );
+            });
+
+
+        });
+    });
+
+    
+    app.get('/complete', isAdmin, function (req, res) {
+        res.render('adminFormComplete.ejs');
+    });
+    
+    app.get('/incomplete',isAdmin, function (req, res) {
+        res.render('adminFormToComplete.ejs');
+    });
     
     app.get('/adminForms', isAdmin, function (req, res) {
         res.render('adminFormsView.ejs');

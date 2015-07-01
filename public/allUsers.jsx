@@ -89,7 +89,7 @@ return(
 }
 }
    
-   ><button className = "btn btn-default">Enslave me as a Lackey</button></a></td>
+   ><button className = "btn btn-default">Assign as an Employee</button></a></td>
     </tr>
 	
 	

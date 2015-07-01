@@ -88,7 +88,7 @@ return(
 }
 }
    
-   ><button className = "btn btn-default">Remove me as a Lackey</button></a></td>   
+   ><button className = "btn btn-default">Remove me as an assigned Employee</button></a></td>   
     </tr>
 	
 	

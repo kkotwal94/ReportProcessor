@@ -33,7 +33,7 @@
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Options <span class="caret"></span></a>
                     <ul id="g-account-menu" class="dropdown-menu" role="menu">
                         <li><a href="/profile">View Profile</a></li>
-						<li><a href="/updateProfile">Update Profile</a></li>
+						
 						<li><a href="/forms">All Forms</a></li>
 						<li><a href="/formsToComplete">Forms To Complete</a></li>
 						<li><a href="/formsCompleted">Forms Completed</a></li>
@@ -50,10 +50,9 @@
 <!-- Main -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <!-- Left column -->
-            <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
-
+          
             <hr>
 
             <ul class="nav nav-stacked">
@@ -61,10 +60,9 @@
                     <ul class="nav nav-stacked collapse in" id="userMenu">
                         <li class="active"> <a href="/profile"><i class="/profile"></i> Home</a></li>
                         <li><a href="/users"><i class="glyphicon glyphicon-user"></i> All Users </a></li>
-						<li><a href="/lackeys"><i class="glyphicon glyphicon-user"></i> All Lackeys </a></li>
-                        <li><a href="/forms"><i class="glyphicon glpyhicon-chevron-right"></i> All Forms</a></li>
-                        <li><a href="/formsToComplete"><i class="glyphicon glyphicon-comment"></i> Forms to Complete</a></li>
-                        <li><a href="/formsCompleted"><i class="glyphicon glyphicon-user"></i> Completed Forms</a></li>
+						<li><a href="/lackeys"><i class="glyphicon glyphicon-user"></i> All Employees </a></li>
+                        <li><a href="/forms"><i class="glyphicon glyphicon-comment"></i> All Forms</a></li>
+                        
                         <li><a href="/about"><i class="glyphicon glyphicon-flag"></i> About</a></li>
                         <li><a href="/rules"><i class="glyphicon glyphicon-exclamation-sign"></i> F.A.Q</a></li>
                         <li><a href="/logout"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
@@ -104,18 +102,12 @@
                     
 
                     <div class="btn-group btn-group-justified">
-                        <a href="/users" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <br> View Users
-                        </a>
+                        
                         <a href="/addform" class="btn btn-primary col-sm-3">
                             <i class="glyphicon glyphicon-flag"></i>
-                            <br> Add Form to Complete
+                            <br> Create New Form
                         </a>
-                        <a href="/forms" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-eye-open"></i>
-                            <br> View Forms
-                        </a>
+                        
                         <a href="/rules" class="btn btn-primary col-sm-3">
                             <i class="glyphicon glyphicon-question-sign"></i>
                             <br> Help
@@ -126,10 +118,33 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Profile</h4></div>
+                            <h4>Profile and Use</h4></div>
                         <div class="panel-body">
 						<div class="row">
-
+						
+						<div class="col-sm-6">
+            <div class="well">
+				 <h1>README</h1>
+				<p>How Do I use this app?</p>
+				<p>First thing the user wants to do at first time login is to assign their employees at <em>All Users (to the left)</em>, so that user can hand out reports to be filled to them, and users can be removed at <em>All Employees(to the left)</em></p>
+				<p><strong>To add a new form</strong>, click "Create New Form" right above us.</p>
+				<p><strong>To complete the new form</strong>, give the form a title, and a date, then click the white space right under Report body to fill out any text you want to append to the document, can be pasted in, if the + widget is hit many options also come up, and if you double click any text more options appear!</p>
+				<p>After you add a new form, it will redirect the user to the "All Forms" tab (which can be found to the left of you), which has a list of all the forms the user(s) have created.</p>
+				<p>At this point, the user can view his individual form, by clicking on "View Form Here". This will display the individual form you've selected and it has many options within that view.</p>
+				Within this view there is:
+				<ol>
+				<li>Edit this form</li>
+				<li>Add Subform</li>
+				<li>Is completed or not buttons</li>
+				<li>Save as pdf/convert to pdf</li>
+				</ol>
+				<p><strong>Edit Form</strong> allows the user to edit that form, and everything must be filled out in that form to be submitted, and the submit button should be double clicked. <strong>You will only edit your portion of the document, subdocuments must be edited by the user that is assigned that subdocument!</strong></p>
+				<p><strong>Adding a subform</strong> allows the user to add a subform to those that user has assigned as their employees, and this subform is attached to the form you have created.</p>
+				<p><strong>Is completed or not</strong> just has to be hit to change is status to whether the form is completed or not</p>
+				<p><strong>Save as pdf</strong> opens up the print option, which if you search in has a <strong>Save as...</strong> parameter, save as pdf(or whatever) to save the form to local storage.</p>
+			</div>
+			
+			</div>	
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-4">
             <div class="well">
@@ -155,10 +170,8 @@
         </div>
           
         </div>
+		
 							
-							<div>
-
-</div>
                         </div>
                         <!--/panel-body-->
                     </div>
