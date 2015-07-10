@@ -15,7 +15,9 @@ module.exports = function (app, passport) {
     });
     
     
-    
+    app.get('/dashboard', isLoggedIn, function (req, res) {
+        res.render('dashboard.ejs', { user : req.user });
+    });
     //Get and post request for login
     app.get('/login', function (req, res) {
         //render the page and pass in any flash data if it exists
@@ -120,9 +122,15 @@ module.exports = function (app, passport) {
     });
     
     app.get('/formsToComplete', isLoggedIn, function (req, res) {
+        if (req.user.local.email == "admin") {
+            res.redirect('/incomplete');
+        }
         res.render('formsToComplete.ejs', { user : req.user });
     });
     app.get('/formsCompleted', isLoggedIn, function (req, res) {
+        if (req.user.local.email == "admin") {
+            res.redirect('/complete');
+        }
         res.render('formsCompleted.ejs', { user : req.user });
     });
     app.get('/about', isLoggedIn, function (req, res) {
@@ -359,12 +367,14 @@ module.exports = function (app, passport) {
     });
     
     app.post('/addSubForm', isLoggedIn, function (req, res) {
+        
         var id = req.body.masterform;
         var subform = new Form();
         
         subform.title = req.body.title;
         subform.date = req.body.date;
-        subform.body = "<pre>" + req.body.title + "</pre>";
+       
+        subform.body = "";
         subform.save();
         Form.findById(id, function (err, report) {
             report.subform.push(subform);
@@ -435,6 +445,8 @@ module.exports = function (app, passport) {
     
     app.get('/forms/:form/edit', isLoggedIn, function (req, res) {
         var id = req.params.form;
+        var user = req.user;
+        
         res.render('editForm.ejs');
     });
     

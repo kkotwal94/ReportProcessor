@@ -1,5 +1,25 @@
 var AllForms = React.createClass({
 
+titleList : function(event){
+var updatedList = this.state.forms;
+updatedList = updatedList.filter(function(item){
+  return item.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+});
+this.setState({items: updatedList});
+console.log(updatedList);
+},
+
+dateList : function(event){
+var updatedList = this.state.forms;
+updatedList = updatedList.filter(function(item){
+  return item.date.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+});
+this.setState({items: updatedList});
+console.log(updatedList);
+},
+
+
+
 loadFormsFromServer : function() {
 	$.ajax({
 		url: '/allForms',
@@ -7,7 +27,7 @@ loadFormsFromServer : function() {
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
-			this.setState({forms: data});
+			this.setState({forms: data, items: data});
 			
 			
 		}.bind(this),
@@ -19,7 +39,8 @@ loadFormsFromServer : function() {
 
 getInitialState: function() {
     return {
-	  forms : []
+	  forms : [],
+	  items : [],
 	};
 },
 
@@ -34,12 +55,35 @@ componentDidMount: function() {
             return(
                   
             <div>
-			
+			<div className="form-group">
+				<button for="collapseOnes" className="btn btn-default" data-toggle="collapse" href="#collapseOnes" aria-expanded="false" aria-controls="collapseOnes">Search By +</button>
+					<div id="collapseOnes" className="collapse">
+						
+						
+					<span className="input input--hoshi">
+					<input className="input__field input__field--hoshi" type="text" id="input-4" onChange = {this.titleList}/>
+					<label className="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span className="input__label-content input__label-content--hoshi">Search by Title!</span>
+					</label>
+					</span>
+
+						<span className="input input--hoshi">
+					<input className="input__field input__field--hoshi" type="text" id="input-4" onChange = {this.dateList}/>
+					<label className="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span className="input__label-content input__label-content--hoshi">Search by Date!</span>
+					</label>
+					</span>
+					
+						
+
+							
+					</div>
+					</div>
 			
             <hr/>
 			<div className = "employees">
 			
-			<Form forms = {this.state.forms}/>
+			<Form forms = {this.state.items}/>
             </div>
 			
             <hr/>

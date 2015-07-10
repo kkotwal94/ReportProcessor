@@ -1,4 +1,4 @@
-var link = window.location.href;
+  var link = window.location.href;
 var array = link.split('/');
 var sub  = array[array.length-1];
 console.log("indi form view : " + sub);
@@ -40,7 +40,7 @@ $.ajax({
 		success: function(data) {
 
 		    treeCycle(data);
-			//console.log(finalData);
+		console.log(finalData);
 
 			data = finalData;
 			this.setState({fullView: data});
@@ -188,7 +188,7 @@ $.ajax({
 		   
 		    <hr/>
      <button className = "btn btn-danger" onClick = {function(event) {
-	 var printContents = document.getElementById("Form").innerHTML;
+	 var printContents = document.getElementById("content").innerHTML;
     var originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
@@ -207,17 +207,32 @@ var Form = React.createClass({
 
 
 render: function() {
+var style = {
+width: '687px',
+background:'#244061',
+padding:'0in 5.4pt 0in 5.4pt',
+verticalAlign:'top'
+};
 
+var style2 = {color: 'white'};
+
+var style3 = {
+width: '95px',
+background:'#8DB3E2',
+padding:'0in 5.4pt 0in 5.4pt',
+verticalAlign:'top'
+}
 var j = "  " + this.props.forms.body + "  ";
 return(
 
 
-
-	<div>
-   
+    <div>
 	<h3>{this.props.forms.author}</h3>
-    <pre>{this.props.forms.title}</pre>
-	  
+	<div id = "content" >
+   
+	
+   <table><tbody>
+	  <tr><td style={style} ><p style = {style2}>{this.props.forms.title}</p></td><td style = {style3}><p>IN PROGRESS</p></td></tr></tbody></table>
 	<div dangerouslySetInnerHTML={{__html : j	}} />
 	<div>
 	{
@@ -227,12 +242,15 @@ return(
 	return (
 
 	<div>
-	<pre> {subform.title}</pre>
+	<table><tbody>
+	<tr><td style={style} ><p style = {style2}>{subform.title}</p></td><td style = {style3}><p>IN PROGRESS</p></td></tr></tbody></table>
+	
 	<div dangerouslySetInnerHTML={{__html : x	}} />
 	</div>
 	
   )})}
 	</div>
+   </div>
    </div>
   
 
@@ -269,3 +287,5 @@ function printDiv(divName) {
     window.print();
     document.body.innerHTML = originalContents;
 	}
+
+	/*var editor1 = AlloyEditor.editable('content');*/

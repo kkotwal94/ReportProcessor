@@ -1,6 +1,32 @@
 ﻿var isFinished = [];
 var AllForms = React.createClass( {
-    
+    titleList : function(event){
+var updatedList = this.state.forms;
+updatedList = updatedList.filter(function(item){
+  return item.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+});
+this.setState({items: updatedList});
+console.log(updatedList);
+},
+
+dateList : function(event){
+var updatedList = this.state.forms;
+updatedList = updatedList.filter(function(item){
+  return item.date.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+});
+this.setState({items: updatedList});
+console.log(updatedList);
+},
+
+authorList : function(event){
+var updatedList = this.state.forms;
+updatedList = updatedList.filter(function(item){
+  return item.author[0].toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+});
+this.setState({items: updatedList});
+console.log(updatedList);
+},
+
     loadFormsFromServer : function () {
         $.ajax({
             url: '/allAdminForms',
@@ -9,7 +35,7 @@ var AllForms = React.createClass( {
             success: function (data) {
                 arrayChecker(data);
                 data = isFinished;
-                this.setState({ forms: data });
+                this.setState({ forms: data, items: data });
 
 
             }.bind(this),
@@ -21,7 +47,8 @@ var AllForms = React.createClass( {
     
     getInitialState: function () {
         return {
-            forms : []
+            forms : [],
+			items : []
         };
     },
     
@@ -36,12 +63,31 @@ this.loadFormsFromServer();
         return(
 
 <div>
+<span className="input input--hoshi">
+					<input className="input__field input__field--hoshi" type="text" id="input-4" onChange = {this.titleList}/>
+					<label className="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span className="input__label-content input__label-content--hoshi">Search by Title!</span>
+					</label>
+					</span>
 
+						<span className="input input--hoshi">
+					<input className="input__field input__field--hoshi" type="text" id="input-4" onChange = {this.dateList}/>
+					<label className="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span className="input__label-content input__label-content--hoshi">Search by Date!</span>
+					</label>
+					</span>
+
+					<span className="input input--hoshi">
+					<input className="input__field input__field--hoshi" type="text" id="input-4" onChange = {this.authorList}/>
+					<label className="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span className="input__label-content input__label-content--hoshi">Search by Author!</span>
+					</label>
+					</span> 
 
 <hr/>
 <div className = "employees">
 
-<Form forms = {this.state.forms}/>
+<Form forms = {this.state.items}/>
 </div>
 
 <hr/>
